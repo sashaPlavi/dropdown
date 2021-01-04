@@ -12,7 +12,7 @@ function App() {
       <NavItem icon={<RunIcon />} />
 
       <NavItem icon=":)">
-        <DropdownMenu></DropdownMenu>
+        <DropdownMenu />
       </NavItem>
     </Navbar>
   );
@@ -22,12 +22,22 @@ function DropdownMenu(props) {
   function DropdownItem(props) {
     return (
       <a href="#" className="menu-item">
+        <span className="icon-button">{props.leftIcon}</span>
         {props.children}
+        <span className="icon-right">{props.rightIcon}</span>
       </a>
     );
   }
 
-  return <div class="dropdown"></div>;
+  return (
+    <div class="dropdown">
+      <DropdownItem>My Profil</DropdownItem>
+      <DropdownItem
+        leftIcon={<MainIcon />}
+        rightIcon={<RunIcon />}
+      ></DropdownItem>
+    </div>
+  );
 }
 
 function Navbar(props) {
@@ -42,7 +52,7 @@ function NavItem(props) {
   const [open, setOpen] = useState(false);
   return (
     <li className="navbar-item">
-      <a href="#" className="navbar-button" onClick={() => setOpen(!open)}>
+      <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
         {props.icon}
       </a>
       {open && props.children}
