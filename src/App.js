@@ -10,8 +10,24 @@ function App() {
       <NavItem icon={<MailIcon />} />
       <NavItem icon={<MainIcon />} />
       <NavItem icon={<RunIcon />} />
+
+      <NavItem icon=":)">
+        <DropdownMenu></DropdownMenu>
+      </NavItem>
     </Navbar>
   );
+}
+
+function DropdownMenu(props) {
+  function DropdownItem(props) {
+    return (
+      <a href="#" className="menu-item">
+        {props.children}
+      </a>
+    );
+  }
+
+  return <div class="dropdown"></div>;
 }
 
 function Navbar(props) {
@@ -29,6 +45,7 @@ function NavItem(props) {
       <a href="#" className="navbar-button" onClick={() => setOpen(!open)}>
         {props.icon}
       </a>
+      {open && props.children}
     </li>
   );
 }
